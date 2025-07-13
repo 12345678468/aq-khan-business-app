@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A.Q Khan Business App</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f4; }
+    h1 { text-align: center; }
+    .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .section { margin-bottom: 30px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    input, select, button { padding: 8px; margin: 5px 0; width: 100%; box-sizing: border-box; }
+    button { background: #007BFF; color: white; border: none; cursor: pointer; }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>A.Q Khan Business App</h1>
+
+  <div class="section">
+    <h2>Add New Stock</h2>
+    <input type="text" id="productName" placeholder="Product Name (e.g. Football 1)">
+    <input type="number" id="productQty" placeholder="Quantity">
+    <button onclick="addStock()">Add to Stock</button>
+    <table id="stockTable">
+      <thead><tr><th>Product</th><th>Quantity</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Add Customer</h2>
+    <input type="text" id="custName" placeholder="Customer Name">
+    <input type="text" id="custPhone" placeholder="Phone Number">
+    <input type="text" id="custAddress" placeholder="Address">
+    <input type="text" id="custProduct" placeholder="Product Bought">
+    <select id="custPayment">
+      <option value="Full">Full Payment</option>
+      <option value="Lease">Lease</option>
+    </select>
+    <button onclick="addCustomer()">Add Customer</button>
+    <table id="customerTable">
+      <thead><tr><th>Name</th><th>Phone</th><th>Address</th><th>Product</th><th>Payment</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  const stockTable = document.querySelector('#stockTable tbody');
+  const customerTable = document.querySelector('#customerTable tbody');
+
+  function addStock() {
+    const name = document.getElementById('productName').value;
+    const qty = document.getElementById('productQty').value;
+    if (name && qty) {
+      const row = stockTable.insertRow();
+      row.innerHTML = `<td>${name}</td><td>${qty}</td>`;
+    }
+  }
+
+  function addCustomer() {
+    const name = document.getElementById('custName').value;
+    const phone = document.getElementById('custPhone').value;
+    const address = document.getElementById('custAddress').value;
+    const product = document.getElementById('custProduct').value;
+    const payment = document.getElementById('custPayment').value;
+    if (name && phone && address && product && payment) {
+      const row = customerTable.insertRow();
+      row.innerHTML = `<td>${name}</td><td>${phone}</td><td>${address}</td><td>${product}</td><td>${payment}</td>`;
+    }
+  }
+</script>
+</body>
+</html>
